@@ -60,6 +60,44 @@ function validate() {
 }
 
 
+// COUNTRY
+function region() {
+    selectedCountry = document.getElementById("select_countries").value;
+    console.log(selectedCountry);
+    if (document.getElementById("select_countries").value === "Default") {
+        alert('Select your selectedCountry from the list');
+        return false;
+    } else {
+        document.getElementById("select_states").disabled = false;
+        return true;
+    }
+}
+
+function region2 (select_states) {
+    select_states = document.getElementById("select_states").value;
+    console.log(select_states);
+    if (document.getElementById("select_states").value === "Default") {
+        alert('Select your select_states from the list');
+        return false;
+    } else {
+        document.getElementById("select_city").disabled = false;
+        return true;
+    }
+}
+
+function region3 (select_city) {
+    select_city = document.getElementById("select_city").value;
+    console.log(select_city);
+    if (document.getElementById("select_city").value === "Default") {
+        alert('Select your select_city from the list');
+        return false;
+    } else {
+        document.getElementById("select_city").disabled = false;
+        return true;
+    }
+}
+
+
 axios.get('http://127.0.0.1:3000/countries')
     .then(function (response) {
         //paste country to list
