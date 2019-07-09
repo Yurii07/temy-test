@@ -97,7 +97,6 @@ function region3 (select_city) {
     }
 }
 
-
 axios.get('http://127.0.0.1:3000/countries')
     .then(function (response) {
         //paste country to list
@@ -129,6 +128,7 @@ axios.get('http://127.0.0.1:3000/countries')
     .catch(function (error) {
         console.log(error);
     });
+
 
 // STATE
 axios.get('http://127.0.0.1:3000/states')
@@ -163,6 +163,7 @@ axios.get('http://127.0.0.1:3000/states')
         console.log(error);
     });
 
+
 // CITY
 axios.get('http://127.0.0.1:3000/cities')
     .then(function (response) {
@@ -196,6 +197,8 @@ axios.get('http://127.0.0.1:3000/cities')
         console.log(error);
     });
 
+
+
 // users
 axios.get('http://127.0.0.1:3000/users')
     .then(function (response) {
@@ -213,12 +216,52 @@ axios.get('http://127.0.0.1:3000/users')
     });
 
 
+// SUBMIT
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    if (validate()) {
-        console.log('test');
+    if (validate() && region() && region2() && region3()) {
+        console.log('post request');
 
+        let first_name = document.getElementById('first_name').value,
+            email = document.getElementById('email').value,
+            phone_number = document.getElementById('phone_number').value,
+            address = document.getElementById('address').value,
+            about = document.getElementById('textareaID').value,
+            select_countries = document.getElementById('select_countries').value,
+            select_states = document.getElementById('select_states').value,
+            select_city = document.getElementById('select_city').value;
+
+        let postData = {
+            name: first_name,
+            email: email,
+            phone_number: phone_number,
+            address: address,
+            about_me: about,
+            country_id: select_countries,
+            state_id: select_states,
+            city_id: select_city,
+        };
+
+        axios.post('http://127.0.0.1:3000/users',
+            JSON.stringify(postData),
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(function (response) {
+                console.log(response);
+                // location.reload();
+                let users_id = document.getElementById('users');
+                let el = document.createElement('li');
+                el.textContent = response.data.name;
+                users_id.appendChild(el);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
 });
