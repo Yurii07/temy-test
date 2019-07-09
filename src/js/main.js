@@ -130,6 +130,40 @@ axios.get('http://127.0.0.1:3000/countries')
         console.log(error);
     });
 
+// STATE
+axios.get('http://127.0.0.1:3000/states')
+    .then(function (response) {
+        // paste list to state
+        let select_states = document.getElementById('select_states');
+
+        response.data.forEach(function (index) {
+
+            let states = [index.name];
+
+            for (let i = 0; i < states.length; i++) {
+                let el = document.createElement('option');
+                el.textContent = states[i];
+                el.value = states[i];
+                select_states.appendChild(el);
+            }
+        });
+        // console.log(response.data,'paste list to state');
+
+        let ulState_id = document.createElement('ul');
+        for (let i = 0; i < response.data.length; i++) {
+            let el = document.createElement('li');
+            el.textContent = response.data[i].id;
+            el.value = response.data[i].id;
+            ulState_id.appendChild(el);
+        }
+
+        // console.log(ulState_id,'ulState_id');
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
