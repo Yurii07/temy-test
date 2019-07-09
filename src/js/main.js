@@ -60,6 +60,38 @@ function validate() {
 }
 
 
+axios.get('http://127.0.0.1:3000/countries')
+    .then(function (response) {
+        //paste country to list
+        let select_countries = document.getElementById('select_countries');
+
+        response.data.forEach(function (index) {
+
+            let countries = [index.name];
+
+            for (let i = 0; i < countries.length; i++) {
+                let el = document.createElement('option');
+                el.textContent = countries[i];
+                el.value = countries[i];
+                select_countries.appendChild(el);
+            }
+        });
+        // console.log(response.data[0].name, 'paste option to country');
+
+        let ulCountry_id = document.createElement('ul');
+        for (let i = 0; i < response.data.length; i++) {
+            let el = document.createElement('li');
+            el.textContent = response.data[i].id;
+            el.value = response.data[i].id;
+            ulCountry_id.appendChild(el);
+        }
+        // console.log(ulCountry_id,'ulCountry_id list');
+
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
