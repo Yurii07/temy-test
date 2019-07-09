@@ -196,6 +196,22 @@ axios.get('http://127.0.0.1:3000/cities')
         console.log(error);
     });
 
+// users
+axios.get('http://127.0.0.1:3000/users')
+    .then(function (response) {
+        let users_id = document.getElementById('users');
+        for (let i = 0; i < response.data.length; i++) {
+            let el = document.createElement('li');
+            el.textContent = response.data[i].name;
+            el.value = response.data[i].name;
+            users_id.appendChild(el);
+        }
+        // console.log(users_id, 'ulUsers_id');
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
 
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
