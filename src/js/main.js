@@ -163,6 +163,39 @@ axios.get('http://127.0.0.1:3000/states')
         console.log(error);
     });
 
+// CITY
+axios.get('http://127.0.0.1:3000/cities')
+    .then(function (response) {
+        //paste list to city
+        let select_city = document.getElementById('select_city');
+
+        response.data.forEach(function (index) {
+
+            let cities = [index.name];
+
+            for (let i = 0; i < cities.length; i++) {
+                let el = document.createElement('option');
+                el.textContent = cities[i];
+                el.value = cities[i];
+                select_city.appendChild(el);
+            }
+        });
+
+        // console.log(response.data, 'paste list to city');
+
+        let ulCity_id = document.createElement('ul');
+        for (let i = 0; i < response.data.length; i++) {
+            let el = document.createElement('li');
+            el.textContent = response.data[i].state_id;
+            el.value = response.data[i].state_id;
+            ulCity_id.appendChild(el);
+        }
+        // console.log(ulCity_id, 'ulCity_id');
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
 
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
