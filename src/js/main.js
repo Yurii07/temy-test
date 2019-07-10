@@ -3,17 +3,22 @@ function validate() {
     let fld = document.getElementById('first_name');
     let letters = /^[A-Za-z]+$/;
 
+    let closest = fld.closest("div");
     if (fld.value.length === 0) {
-        let closest = fld.closest("div");
         closest.classList.add("error");
         alert("Name should not be empty");
         return false;
+    } else {
+        closest.classList.remove("error");
+        closest.classList.add("success");
     }
     if (!fld.value.match(letters)) {
-        let closest = fld.closest("div");
         closest.classList.add("error");
         alert("The name should contain only letters");
         return false;
+    } else {
+        closest.classList.remove("error");
+        closest.classList.add("success");
     }
 
     // ==========mail============
@@ -44,20 +49,6 @@ function validate() {
 
         return false
     }
-
-    // ======textarea=======
-    // let textarea = document.getElementById("textareaID");
-    // textarea.addEventListener("input", function () {
-    //
-    //     let maxlength = textarea.getAttribute("maxlength");
-    //     let currentLength = textarea.value.length;
-    //
-    //     if (currentLength >= maxlength) {
-    //         alert("You have reached the maximum number of characters.");
-    //     } else {
-    //         console.log(maxlength - currentLength + " chars left");
-    //     }
-    // });
 
     return true;
 }
@@ -227,7 +218,6 @@ axios.get('http://127.0.0.1:3000/cities')
     });
 
 
-
 // users
 axios.get('http://127.0.0.1:3000/users')
     .then(function (response) {
@@ -235,8 +225,14 @@ axios.get('http://127.0.0.1:3000/users')
         for (let i = 0; i < response.data.length; i++) {
             let el = document.createElement('li');
             el.textContent = response.data[i].name;
-            el.value = response.data[i].name;
+            el.classList.add("chip");
+            // console.log(el);
+            el.setAttribute("value", response.data[i].id);
             users_id.appendChild(el);
+
+            let icon = document.createElement("i");
+            let node = document.createTextNode("person");
+            icon.appendChild(node);
         }
         // console.log(users_id, 'ulUsers_id');
     })
@@ -281,11 +277,16 @@ form.addEventListener('submit', function (evt) {
             })
             .then(function (response) {
                 console.log(response);
+
                 // location.reload();
+
                 let users_id = document.getElementById('users');
                 let el = document.createElement('li');
+                // el.className +="chip";
+                el.classList.add("chip");
                 el.textContent = response.data.name;
                 users_id.appendChild(el);
+
 
             })
             .catch(function (error) {
@@ -294,3 +295,4 @@ form.addEventListener('submit', function (evt) {
     }
 
 });
+
