@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./style/style.css">
     <title>Temy Test Environment</title>
 
@@ -15,70 +15,87 @@
 <body>
 
 <div class="container">
-    <form class="col s12 myForm" id="formID" novalidate>
+    <form class="col s12 myForm" id="formID" name="vform" novalidate>
 
         <div class="row">
             <div class="field col s12 ">
-                <input id="first_name" type="text" class="" name="first_name" placeholder="First Name" required>
+                <input id="first_name" type="text" class="validate" name="first_name" placeholder="First Name" required>
                 <label for="first_name">
+                    <i class="material-icons ">person</i>
                     First Name
                 </label>
+                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
             </div>
         </div>
 
         <div class="row">
             <div class="field col s12 ">
-                <input id="email" type="email" class="validate" name="email" placeholder="test@example.com"
-                       pattern="/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm"
+                <input id="email" type="email" class="validate" name="email"
+                       placeholder="test@example.com"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                        required>
-                <label for="email">Email</label>
+                <label for="email">
+                    <i class="material-icons ">email</i>
+                    Email</label>
+                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
             </div>
         </div>
 
         <div class="row region">
-            <div class="field col s4 ">
-                <select id="select_countries" class="browser-default"  onchange="region()">
+            <div class="field col s12 m4" id="country">
+                <select id="select_countries" class="browser-default" onchange="region()">
                     <option value="Default" disabled selected>Country</option>
                 </select>
             </div>
 
-            <div class="field col s4 ">
+            <div class="field col s12 m4" id="state">
                 <select id="select_states" class="browser-default" disabled onchange="region2()">
                     <option value="Default" disabled selected>State</option>
                 </select>
             </div>
 
-            <div class="field col s4 ">
+            <div class="field col s12 m4" id="city">
                 <select id="select_city" class="browser-default" disabled onchange="region3()">
-                    <option value="Default" disabled selected>city</option>
+                    <option value="Default" disabled selected>City</option>
                 </select>
             </div>
         </div>
 
         <div class="row">
             <div class="field col s12 ">
-                <input id="phone_number" class="validate" type="text" name="phone_number"
-                       placeholder="example number 1234445577" required>
-                <label for="phone_number">Phone number</label>
+                <input id="phone_number" class="validate" type="tel" name="phone_number"
+                       placeholder="example number 80001234455" pattern="[789][0-9]{10}" required>
+                <label for="phone_number">
+                    <i class="material-icons">local_phone</i>
+                    Phone number
+                </label>
+                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="field col s12">
+                <input id="address" type="text" placeholder="Address">
+                <label for="address">
+                    <i class="material-icons">home</i>
+                    Address</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="address" type="text">
-                <label for="address">Address</label>
+                <textarea id="textareaID" class="materialize-textarea" maxlength='500'></textarea>
+                <label for="textareaID">
+                    <i class="material-icons">mode_edit</i>
+                    About me
+                </label>
+                <span id="charcount" style="float: right; font-size: 12px; height: 18px;">0 / 500</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-                <textarea maxlength='500' id="textareaID" name="textareaID" placeholder="Ваше сообщение"></textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                <button class="btn waves-effect waves-light" type="submit" id="submit">Submit</button>
+            <div class="col s12 center-align">
+                <button class="btn waves-effect waves-light z-depth-5 " type="submit" id="submit">Submit</button>
             </div>
         </div>
 
@@ -87,7 +104,7 @@
 </div>
 
 <div class="container">
-    <div class="col s12">
+    <div class="col s12 ">
         <span>Users</span>
         <hr>
         <ul id="users">
