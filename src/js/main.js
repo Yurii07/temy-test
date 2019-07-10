@@ -77,37 +77,51 @@ textarea.addEventListener("input", function () {
 
 // COUNTRY
 function region() {
-    let selectedCountry = document.getElementById("select_countries").value;
-    console.log(selectedCountry);
+    let selectedCountry = document.getElementById("select_countries");
+    let country = document.getElementById("country");
+    let selectedCountryVal = document.getElementById("select_countries").value;
+    let closest = selectedCountry.closest("div");
+
     if (document.getElementById("select_countries").value === "Default") {
+
         alert('Select your selectedCountry from the list');
+        closest.classList.add("error");
+
         return false;
     } else {
         document.getElementById("select_states").disabled = false;
+
+        closest.classList.remove("error");
         return true;
     }
 }
 
-function region2 (select_states) {
-    select_states = document.getElementById("select_states").value;
-    console.log(select_states);
+function region2() {
+    let select_states = document.getElementById("select_states");
+    let closest = select_states.closest("div");
+
     if (document.getElementById("select_states").value === "Default") {
         alert('Select your select_states from the list');
+        closest.classList.add("error");
         return false;
     } else {
+        closest.classList.remove("error");
         document.getElementById("select_city").disabled = false;
         return true;
     }
 }
 
-function region3 (select_city) {
-    select_city = document.getElementById("select_city").value;
-    console.log(select_city);
+function region3() {
+    let select_city = document.getElementById("select_city");
+    let closest = select_city.closest("div");
+
     if (document.getElementById("select_city").value === "Default") {
         alert('Select your select_city from the list');
+        closest.classList.add("error");
         return false;
     } else {
         document.getElementById("select_city").disabled = false;
+        closest.classList.remove("error");
         return true;
     }
 }
