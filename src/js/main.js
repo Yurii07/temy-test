@@ -3,24 +3,27 @@ function validate() {
     let fld = document.getElementById('first_name');
     let letters = /^[A-Za-z]+$/;
 
-    if (fld.value.length == 0) {
+    if (fld.value.length === 0) {
         let closest = fld.closest("div");
         closest.classList.add("error");
+        alert("Name should not be empty");
         return false;
     }
     if (!fld.value.match(letters)) {
         let closest = fld.closest("div");
         closest.classList.add("error");
+        alert("The name should contain only letters");
         return false;
     }
 
     // ==========mail============
     let email = document.getElementById('email');
-    let validateMail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    let validateMail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-    if (email.value.length == 0) {
+    if (email.value.length === 0) {
         let closest = email.closest("div");
         closest.classList.add("error");
+        alert("Email field should not be empty");
         return false;
     }
     if (!email.value.match(validateMail)) {
@@ -32,7 +35,7 @@ function validate() {
 
     // ==========Phone============
     let phone_number = document.getElementById('phone_number');
-    let validatePhone = /^\d{10}$/;
+    let validatePhone = /^\d{11}$/;
 
     if (!phone_number.value.match(validatePhone)) {
         let closest = phone_number.closest("div");
@@ -43,26 +46,38 @@ function validate() {
     }
 
     // ======textarea=======
-    let textarea = document.getElementById("textareaID");
-    textarea.addEventListener("input", function () {
-
-        let maxlength = textarea.getAttribute("maxlength");
-        let currentLength = textarea.value.length;
-
-        if (currentLength >= maxlength) {
-            alert("You have reached the maximum number of characters.");
-        } else {
-            console.log(maxlength - currentLength + " chars left");
-        }
-    });
+    // let textarea = document.getElementById("textareaID");
+    // textarea.addEventListener("input", function () {
+    //
+    //     let maxlength = textarea.getAttribute("maxlength");
+    //     let currentLength = textarea.value.length;
+    //
+    //     if (currentLength >= maxlength) {
+    //         alert("You have reached the maximum number of characters.");
+    //     } else {
+    //         console.log(maxlength - currentLength + " chars left");
+    //     }
+    // });
 
     return true;
 }
 
+let textarea = document.getElementById("textareaID");
+textarea.addEventListener("input", function () {
+    let lng = this.value.length;
+    let maxlength = textarea.getAttribute("maxlength");
+    console.log(this.value.length);
+    document.getElementById("charcount").innerHTML = lng + ' / 500 ';
+
+    if (lng >= maxlength) {
+        alert('You have reached the maximum length of characters')
+    }
+});
+
 
 // COUNTRY
 function region() {
-    selectedCountry = document.getElementById("select_countries").value;
+    let selectedCountry = document.getElementById("select_countries").value;
     console.log(selectedCountry);
     if (document.getElementById("select_countries").value === "Default") {
         alert('Select your selectedCountry from the list');
