@@ -15,13 +15,20 @@ body {
     display: flex;
     flex-flow: column-reverse;
 }
-
-.region .required-field {
-    position: relative;
+.region {
+    /*position: relative;*/
+}
+.region .error:before {
+    position: absolute;
+    top: 15px;
+}
+.region .success:before {
+    position: absolute;
+    top: 15px;
 }
 
 
-.error {
+.error input{
     /*border-bottom: 1px solid #F44336;*/
     /* -webkit-box-shadow: 0 1px 0 0 #F44336;*/
     /* box-shadow: 0 1px 0 0 #F44336;*/
@@ -29,7 +36,15 @@ body {
 
 .error:before {
     content: "\2718";
-    color: red;
+    color: #F44336;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    font-size: 12px;
+}
+.success:before {
+    content: "\2714";
+    color: #4CAF50;
     position: absolute;
     top: 30px;
     left: 0;
@@ -50,15 +65,15 @@ label {
     font-size: 1rem;
 }
 
-.field .helper-text {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    min-height: 18px;
-    display: block;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.54);
-}
+/*.field .helper-text {*/
+/*    position: absolute;*/
+/*    top: 30px;*/
+/*    left: 0;*/
+/*    min-height: 18px;*/
+/*    display: block;*/
+/*    font-size: 12px;*/
+/*    color: rgba(0, 0, 0, 0.54);*/
+/*}*/
 
 
 
@@ -143,5 +158,5 @@ input:focus::-webkit-input-placeholder {
 input:not(:placeholder-shown) + label,
 input:focus + label {
     transform: translate(0, 0) scale(1);
-    /*cursor: pointer;*/
+    cursor: pointer;
 }

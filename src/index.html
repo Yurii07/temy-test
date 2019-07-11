@@ -24,7 +24,7 @@
                     <i class="material-icons ">person</i>
                     First Name
                 </label>
-                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
+                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
             </div>
         </div>
 
@@ -37,25 +37,25 @@
                 <label for="email">
                     <i class="material-icons ">email</i>
                     Email</label>
-                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
+                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
             </div>
         </div>
 
         <div class="row region">
             <div class="field col s12 m4" id="country">
-                <select id="select_countries" class="browser-default" onchange="region()">
+                <select id="select_countries" class="browser-default" onchange="chooseCountry()">
                     <option value="Default" disabled selected>Country</option>
                 </select>
             </div>
 
             <div class="field col s12 m4" id="state">
-                <select id="select_states" class="browser-default" disabled onchange="region2()">
+                <select id="select_states" class="browser-default" disabled onchange="chooseState()">
                     <option value="Default" disabled selected>State</option>
                 </select>
             </div>
 
             <div class="field col s12 m4" id="city">
-                <select id="select_city" class="browser-default" disabled onchange="region3()">
+                <select id="select_city" class="browser-default" disabled onchange="chooseCity()">
                     <option value="Default" disabled selected>City</option>
                 </select>
             </div>
@@ -69,7 +69,7 @@
                     <i class="material-icons">local_phone</i>
                     Phone number
                 </label>
-                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>
+                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
             </div>
         </div>
 
@@ -83,8 +83,8 @@
         </div>
 
         <div class="row">
-            <div class="input-field col s12">
-                <textarea id="textareaID" class="materialize-textarea" maxlength='500'></textarea>
+            <div class="input-field col s12 ">
+                <textarea id="textareaID" class="materialize-textarea" maxlength='500' ></textarea>
                 <label for="textareaID">
                     <i class="material-icons">mode_edit</i>
                     About me
@@ -114,7 +114,7 @@
 
 
 <!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
