@@ -4,8 +4,8 @@ function validate() {
         phone_number = document.getElementById('phone_number');
 
     if (allLetter(uname)) {
-        if (ValidateEmail(email)) {
-            if (ValidatePhone(phone_number)) {
+        if (validateEmail(email)) {
+            if (validatePhone(phone_number)) {
                 if (chooseCountry(selectedCountry)) {
                     if (chooseState(select_states)) {
                         if (chooseCity(select_city)) {
@@ -39,7 +39,7 @@ function allLetter(uname) {
 }
 
 
-function ValidateEmail(email) {
+function validateEmail(email) {
     let mailformat = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (email.value.match(mailformat)) {
         let closest = email.closest("div");
@@ -59,7 +59,7 @@ function ValidateEmail(email) {
     }
 }
 
-function ValidatePhone(phone_number) {
+function validatePhone(phone_number) {
     let valNum = /^\d{11}$/;
     if (phone_number.value.match(valNum)) {
         let closest = phone_number.closest("div");
@@ -268,16 +268,18 @@ axios.get('http://127.0.0.1:3000/users')
     .then(function (response) {
         let users_id = document.getElementById('users');
         for (let i = 0; i < response.data.length; i++) {
+
             let el = document.createElement('li');
             el.textContent = response.data[i].name;
             el.classList.add("chip");
-            // console.log(el);
             el.setAttribute("value", response.data[i].id);
             users_id.appendChild(el);
-
+// append icon user
             let icon = document.createElement("i");
-            let node = document.createTextNode("person");
-            icon.appendChild(node);
+            icon.textContent = "person";
+            icon.classList.add("material-icons");
+            el.appendChild(icon);
+
         }
         // console.log(users_id, 'ulUsers_id');
     })
@@ -301,15 +303,6 @@ form.addEventListener('submit', function (evt) {
         but.addEventListener("click", function () {
             modal.style['display'] = 'none';
         });
-
-        // clear fields
-        form.reset();
-
-        document.querySelectorAll(".field, input").forEach(function (element) {
-            element.classList.remove("success");
-            element.classList.remove("valid");
-        });
-
         // console.log('post request');
 
         let first_name = document.getElementById('first_name').value,
@@ -349,6 +342,18 @@ form.addEventListener('submit', function (evt) {
                 el.classList.add("chip");
                 el.textContent = response.data.name;
                 users_id.appendChild(el);
+// append icon user
+                let icon = document.createElement("i");
+                icon.textContent = "person";
+                icon.classList.add("material-icons");
+                el.appendChild(icon);
+                // clear fields
+                form.reset();
+// remove classes in .field, input
+                document.querySelectorAll(".field, input").forEach(function (element) {
+                    element.classList.remove("success");
+                    element.classList.remove("valid");
+                });
 
             })
             .catch(function (error) {

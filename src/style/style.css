@@ -141,6 +141,16 @@ input:focus + label {
     cursor: pointer;
 }
 
+/*users icon*/
+#users li {
+    position: relative;
+    padding-left: 30px;
+}
+#users li i {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+}
 /*modal*/
 .modal {
     width: 100vw;
