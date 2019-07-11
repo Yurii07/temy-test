@@ -88,23 +88,21 @@ textarea.addEventListener("input", function () {
     document.getElementById("charcount").innerHTML = lng + ' / 500 ';
     if (lng >= maxlength) {
         alert('You have reached the maximum length of characters')
-
         // let closest = textarea.closest("div");
         // closest.classList.add("active");
-
     }
 });
 
 let x = document.querySelector(".input-field label");
-textarea.addEventListener("focus", function() {
+textarea.addEventListener("focus", function () {
     let lng = this.value.length;
-    if (lng === 0){
+    if (lng === 0) {
         x.classList.add("active");
     }
 });
-textarea.addEventListener("blur", function() {
+textarea.addEventListener("blur", function () {
     let lng = this.value.length;
-    if (lng === 0){
+    if (lng === 0) {
         x.classList.remove("active");
     } else {
         x.classList.add("active");
@@ -166,8 +164,7 @@ function chooseCity(select_city) {
     }
 }
 
-
-
+// countries
 axios.get('http://127.0.0.1:3000/countries')
     .then(function (response) {
         //paste country to list
@@ -200,8 +197,7 @@ axios.get('http://127.0.0.1:3000/countries')
         console.log(error);
     });
 
-
-// STATE
+// states
 axios.get('http://127.0.0.1:3000/states')
     .then(function (response) {
         // paste list to state
@@ -234,8 +230,7 @@ axios.get('http://127.0.0.1:3000/states')
         console.log(error);
     });
 
-
-// CITY
+// cities
 axios.get('http://127.0.0.1:3000/cities')
     .then(function (response) {
         //paste list to city
@@ -268,7 +263,6 @@ axios.get('http://127.0.0.1:3000/cities')
         console.log(error);
     });
 
-
 // users
 axios.get('http://127.0.0.1:3000/users')
     .then(function (response) {
@@ -296,8 +290,27 @@ axios.get('http://127.0.0.1:3000/users')
 let form = document.getElementById('formID');
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
+
     if (validate() && chooseCountry() && chooseState() && chooseCity()) {
-        console.log('post request');
+
+        //modal
+        let modal = document.getElementById("modal1"),
+            but = document.getElementById('popup__close');
+        modal.style['display'] = 'flex';
+        // modal btn close
+        but.addEventListener("click", function () {
+            modal.style['display'] = 'none';
+        });
+
+        // clear fields
+        form.reset();
+
+        document.querySelectorAll(".field, input").forEach(function (element) {
+            element.classList.remove("success");
+            element.classList.remove("valid");
+        });
+
+        // console.log('post request');
 
         let first_name = document.getElementById('first_name').value,
             email = document.getElementById('email').value,
@@ -333,11 +346,9 @@ form.addEventListener('submit', function (evt) {
 
                 let users_id = document.getElementById('users');
                 let el = document.createElement('li');
-                // el.className +="chip";
                 el.classList.add("chip");
                 el.textContent = response.data.name;
                 users_id.appendChild(el);
-
 
             })
             .catch(function (error) {

@@ -14,6 +14,19 @@
 </head>
 <body>
 
+<!-- Modal  -->
+<div id="modal1" class="modal">
+    <div class="modal-content center-align">
+        <h4>Modal</h4>
+        <p>Thanks new user created</p>
+        <div class="modal-footer center-align">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat " id="popup__close"><i
+                    class="material-icons ">close</i></a>
+        </div>
+    </div>
+</div>
+
+
 <div class="container">
     <form class="col s12 myForm" id="formID" name="vform" novalidate>
 
@@ -24,7 +37,6 @@
                     <i class="material-icons ">person</i>
                     First Name
                 </label>
-                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
             </div>
         </div>
 
@@ -36,8 +48,8 @@
                        required>
                 <label for="email">
                     <i class="material-icons ">email</i>
-                    Email</label>
-                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
+                    Email
+                </label>
             </div>
         </div>
 
@@ -69,7 +81,6 @@
                     <i class="material-icons">local_phone</i>
                     Phone number
                 </label>
-                <!--                <span class="helper-text" data-error="&#10008" data-success="&#10004"></span>-->
             </div>
         </div>
 
@@ -78,13 +89,14 @@
                 <input id="address" type="text" placeholder="Address">
                 <label for="address">
                     <i class="material-icons">home</i>
-                    Address</label>
+                    Address
+                </label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12 ">
-                <textarea id="textareaID" class="materialize-textarea" maxlength='500' ></textarea>
+                <textarea id="textareaID" class="materialize-textarea" maxlength='500'></textarea>
                 <label for="textareaID">
                     <i class="material-icons">mode_edit</i>
                     About me

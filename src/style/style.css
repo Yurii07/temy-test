@@ -15,9 +15,7 @@ body {
     display: flex;
     flex-flow: column-reverse;
 }
-.region {
-    /*position: relative;*/
-}
+
 .region .error:before {
     position: absolute;
     top: 15px;
@@ -25,13 +23,6 @@ body {
 .region .success:before {
     position: absolute;
     top: 15px;
-}
-
-
-.error input{
-    /*border-bottom: 1px solid #F44336;*/
-    /* -webkit-box-shadow: 0 1px 0 0 #F44336;*/
-    /* box-shadow: 0 1px 0 0 #F44336;*/
 }
 
 .error:before {
@@ -42,6 +33,7 @@ body {
     left: 0;
     font-size: 12px;
 }
+
 .success:before {
     content: "\2714";
     color: #4CAF50;
@@ -64,18 +56,6 @@ label {
 .material-icons {
     font-size: 1rem;
 }
-
-/*.field .helper-text {*/
-/*    position: absolute;*/
-/*    top: 30px;*/
-/*    left: 0;*/
-/*    min-height: 18px;*/
-/*    display: block;*/
-/*    font-size: 12px;*/
-/*    color: rgba(0, 0, 0, 0.54);*/
-/*}*/
-
-
 
 /**
 * Add a transition to the label and input.
@@ -160,3 +140,35 @@ input:focus + label {
     transform: translate(0, 0) scale(1);
     cursor: pointer;
 }
+
+/*modal*/
+.modal {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+
+.modal-content{
+    width: 500px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    position: relative;
+}
+
+.modal .modal-footer{
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
